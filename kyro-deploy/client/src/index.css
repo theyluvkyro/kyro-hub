@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Force Dark Mode for Netflix aesthetic */
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  /* Netflix inspired palette */
+  --background: 0 0% 8%; /* #141414 */
+  --foreground: 0 0% 100%;
+  
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 100%;
+  
+  --popover: 0 0% 12%;
+  --popover-foreground: 0 0% 100%;
+  
+  /* Netflix Red */
+  --primary: 357 92% 47%; /* #e50914 */
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 0 0% 20%;
+  --secondary-foreground: 0 0% 100%;
+  
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 65%;
+  
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 357 92% 47%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 0 0% 20%;
+  --input: 0 0% 20%;
+  --ring: 357 92% 47%;
+
+  --radius: 0.5rem;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply tracking-tight;
+  }
+
+  /* Hide scrollbar for cleaner look on webkit */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  }
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0,0,0,0.8);
+  }
+  
+  /* Smooth vignette for hero sections */
+  .hero-vignette {
+    background: linear-gradient(0deg, hsl(var(--background)) 0%, transparent 50%),
+                linear-gradient(90deg, hsl(var(--background)) 0%, transparent 50%);
+  }
+
+  /* Hide scrollbar for horizontal rows but keep functionality */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
